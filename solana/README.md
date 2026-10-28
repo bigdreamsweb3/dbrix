@@ -1,6 +1,6 @@
 # `@dbrix/solana`
 
-The Solana adapter sends DBrix text payloads in Memo instructions and reads confirmed Memo payloads back through JSON-RPC. The current sender builds Solana **v1 transactions** and checks wallet support for transaction version 1.
+The Solana adapter builds and sends Solana **v1 transactions**, including transactions that combine application instructions with a DBrix Memo record. It supports local, wallet, and remote partial signers, and reads confirmed Memo payloads back through JSON-RPC.
 
 ## Install
 
@@ -22,6 +22,25 @@ const signature = await sendMemoV1(memoPayload, {
 ```
 
 The caller must provide the RPC endpoint explicitly. DBrix does not choose a cluster or RPC provider for the application.
+
+## Send application instructions with a Memo
+
+Use `sendInstructionsV1` when a single atomic transaction must include protocol instructions and the encrypted Ledger Memo. It accepts web3.js `TransactionInstruction` values and Solana Kit instructions. Additional signers may be local signers or remote `TransactionPartialSigner` implementations, such as the TSN Mother Node signer.
+
+```typescript
+import { sendInstructionsV1 } from "@dbrix/solana";
+
+const signature = await sendInstructionsV1(
+  [initializeInstruction, tcapCreditInstruction, memoInstruction],
+  {
+    payerSigner: crankerSigner,
+    additionalSigners: [motherNodeSigner],
+    rpcUrl: configuredSolanaRpc,
+  },
+);
+```
+
+The helper compiles a v1 message, applies explicit v1 compute and loaded-account limits, collects all required signatures over the exact same message, checks the 4,096-byte v1 transaction limit, submits, and confirms the transaction. The TCAP instructions and Memo therefore execute atomically.
 
 ## Confirmed Devnet example
 

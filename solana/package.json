@@ -1,8 +1,8 @@
 {
   "name": "@dbrix/solana",
-  "version": "0.1.0",
-  "description": "Solana Memo v1 transport, wallet signing, and RPC readback for DBrix payloads.",
-  "keywords": ["dbrix", "solana", "transactions", "memo"],
+  "version": "0.2.0",
+  "description": "Solana v1 transaction transport, wallet and remote signing, Memo payloads, and RPC readback for DBrix.",
+  "keywords": ["dbrix", "solana", "transactions", "memo", "versioned-transactions", "ledger"],
   "license": "MIT",
   "author": "Agbaka Daniel Ugonna (Big Dreams Web3)",
   "repository": {
