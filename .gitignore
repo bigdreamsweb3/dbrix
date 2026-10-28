@@ -1,0 +1,22 @@
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+coverage/
+build/
+*.tsbuildinfo
+
+# Local signer material and private environment files must never enter the public repo.
+**/wallet*.json
+**/*keypair*.json
+**/*.pem
+**/*.key
+**/*.secret
+.npmrc
+
+# OS/editor output
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

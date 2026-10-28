@@ -1,0 +1,12 @@
+{
+  "name": "@dbrix/test-suite",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:dbrix": "vitest run --reporter=verbose --silent=false test/dbrix-roundtrip.spec.ts"
+  },
+  "devDependencies": {
+    "vitest": "^1.2.0"
+  }
+}

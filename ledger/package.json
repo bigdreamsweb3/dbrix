@@ -1,0 +1,52 @@
+{
+  "name": "@dbrix/ledger",
+  "version": "0.1.0",
+  "description": "Deterministic Base64URL slot encoding for carrying binary data through chain, database, and text-only storage systems.",
+  "keywords": [
+    "dbrix",
+    "ledger",
+    "blockchain",
+    "encoding",
+    "storage",
+    "base64url",
+    "encoding"
+  ],
+  "license": "MIT",
+  "author": "Agbaka Daniel Ugonna (Big Dreams Web3)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bigdreamsweb3/dbrix.git",
+    "directory": "ledger"
+  },
+  "homepage": "https://github.com/bigdreamsweb3/dbrix/tree/main/ledger#readme",
+  "bugs": { "url": "https://github.com/bigdreamsweb3/dbrix/issues" },
+  "publishConfig": { "access": "public" },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "test:ledger": "vitest run test/ledger.spec.ts",
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "prepublishOnly": "npm run build",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.8",
+    "@types/pako": "^2.0.4",
+    "tsup": "^8.5.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.0"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "name": "@dbrix/core",
+  "version": "0.1.2",
+  "description": "Low-level, identity-agnostic cryptographic primitives for authenticated encryption of structured and binary data (Web2 & Web3).",
+  "keywords": [
+    "encryption",
+    "cryptography",
+    "nacl",
+    "secretbox",
+    "security",
+    "web3",
+    "web2"
+  ],
+  "license": "MIT",
+  "author": "Agbaka Daniel Ugonna (Big Dreams Web3)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bigdreamsweb3/dbrix.git",
+    "directory": "core"
+  },
+  "homepage": "https://github.com/bigdreamsweb3/dbrix/tree/main/core#readme",
+  "bugs": { "url": "https://github.com/bigdreamsweb3/dbrix/issues" },
+  "publishConfig": { "access": "public" },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "test:core": "vitest run --reporter=verbose --silent=false test/core_crypto.test.ts",
+    "version:patch": "npm version patch",
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "build:new-version": "tsup src/index.ts --format esm,cjs --dts",
+    "prepublishOnly": "npm run build"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "@solana/web3.js": "^1.98.4",
+    "bs58": "^6.0.0",
+    "pako": "^2.1.0",
+    "tweetnacl": "^1.0.3",
+    "tweetnacl-util": "^0.15.1"
+  },
+  "devDependencies": {
+    "@types/pako": "^2.0.4",
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.2.0"
+  }
+}
